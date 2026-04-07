@@ -11,12 +11,14 @@ function floatToMoneyText(value) {
 
 function readTotal() {
 	var total = $("#total").text();
+	// var total = document.getElementById("total").innerText;
 	return moneyTextToFloat(total);
 }
 
 function writeTotal(value) {
 	var text = floatToMoneyText(value);
 	$("#total").text(text);
+	// document.getElementById("total").innerText = text;
 }
 
 function calculateTotalProducts() {
