@@ -22,11 +22,21 @@ function writeTotal(value) {
 }
 
 function calculateTotalProducts() {
+
+	// var items = document.getElementsByClassName("item");
 	var items = $(".item");
 
 	var total = 0;
 
-	for(var pos = 0; pos < items.length; pos++) {
+	for (var pos = 0; pos < items.length; pos++) {
+		// var priceElements = items[pos].getElementsByClassName("price");
+		// var priceText = priceElements[0].innerHTML;
+		// var price = moneyTextToFloat(priceText);
+
+		// var qtyElements = produtos[pos].getElementsByClassName("quantity");
+		// var qtyText = qtyElements[0].value;
+		// var quantity = moneyTextToFloat(qtyText);
+
 		var $produto = $(items[pos]);
 
 		var price = moneyTextToFloat($produto.find(".price").text());
@@ -40,5 +50,18 @@ function calculateTotalProducts() {
 }
 
 function getFreightPrice() {
-	
+
 }
+
+function quantidadeMudou() {
+	writeTotal(calculateTotalProducts());
+}
+
+function onDocumentLoad() {
+	var textEdits = document.getElementsByClassName("quantity");
+	for (var i = 0; i < textEdits.length; i++) {
+		textEdits[i].onchange = quantidadeMudou;
+	}
+}
+
+window.onload = onDocumentLoad;
