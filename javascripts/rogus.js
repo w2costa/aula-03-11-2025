@@ -28,7 +28,8 @@ function calculateTotalProducts() {
 
 	var total = 0;
 
-	for (var pos = 0; pos < items.length; pos++) {
+	$(items).each(function (pos) {
+		//for (var pos = 0; pos < items.length; pos++) {
 		// var priceElements = items[pos].getElementsByClassName("price");
 		// var priceText = priceElements[0].innerHTML;
 		// var price = moneyTextToFloat(priceText);
@@ -44,7 +45,7 @@ function calculateTotalProducts() {
 
 		total += (quantity * price);
 
-	}
+	});
 
 	return total;
 }
@@ -53,15 +54,21 @@ function getFreightPrice() {
 
 }
 
-function quantidadeMudou() {
-	writeTotal(calculateTotalProducts());
-}
+// function quantidadeMudou() {
+// 	writeTotal(calculateTotalProducts());
+// }
 
-function onDocumentLoad() {
-	var textEdits = document.getElementsByClassName("quantity");
-	for (var i = 0; i < textEdits.length; i++) {
-		textEdits[i].onchange = quantidadeMudou;
-	}
-}
+// function onDocumentLoad() {
+// 	var textEdits = document.getElementsByClassName("quantity");
+// 	for (var i = 0; i < textEdits.length; i++) {
+// 		textEdits[i].onchange = quantidadeMudou;
+// 	}
+// }
 
-window.onload = onDocumentLoad;
+// window.onload = onDocumentLoad;
+
+$(function () {
+	$(".quantity").change(function () {
+		writeTotal(calculateTotalProducts());
+	});
+});
